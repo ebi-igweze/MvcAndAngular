@@ -34,6 +34,13 @@ namespace PhotoGallery.Data
                 return null;
             }
         }
+        public User(IAppUser user)
+        {
+            FirstName = user.FirstName;
+            LastName = user.LastName;
+            Email = user.Email;
+            Password = user.Password;
+        }
         
     }
 }
