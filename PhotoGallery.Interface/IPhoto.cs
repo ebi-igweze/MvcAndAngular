@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Interface
 {
-    public class IPhoto
+    public interface IPhoto
     {
         int PhotoId { get; set; }
         string PhotoName { get; set; }
