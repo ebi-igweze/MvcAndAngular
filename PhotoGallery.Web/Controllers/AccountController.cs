@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PhotoGallery.Data.DbContexts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,16 @@ namespace PhotoGallery.Web.Controllers
 {
     public class AccountController : Controller
     {
+
+        private GalleryDbContext _db;
+
+        public AccountController() { _db = new GalleryDbContext(); }
+
         // GET: Account
-        public ActionResult Index()
+        public JsonResult Index()
         {
-            return View();
+            var galleries = _db.Galleries.ToList();
+            return Json(galleries, JsonRequestBehavior.AllowGet);
         }
     }
 }
