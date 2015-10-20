@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Data
 {
-    class User : IAppUser
+    public class User : IAppUser
     {
         public int UserId { get; set; }
         [Required]

@@ -52,6 +52,11 @@
     <Compile Include="DbContexts\GalleryDbContext.cs" />
     <Compile Include="DbContexts\UserDbContext.cs" />
     <Compile Include="Gallery.cs" />
+    <Compile Include="Migrations\201510201724560_initial-Gallery.cs" />
+    <Compile Include="Migrations\201510201724560_initial-Gallery.Designer.cs">
+      <DependentUpon>201510201724560_initial-Gallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -67,6 +72,11 @@
       <Project>{379c4340-ed3d-4eaf-a986-bbd650589c1c}</Project>
       <Name>PhotoGallery.Interface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201510201724560_initial-Gallery.resx">
+      <DependentUpon>201510201724560_initial-Gallery.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

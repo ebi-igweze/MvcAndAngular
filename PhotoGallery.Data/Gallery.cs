@@ -1,16 +1,21 @@
 ﻿using PhotoGallery.Interface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PhotoGallery.Data
 {
-    class Gallery : IGallery
+    public class Gallery : IGallery
     {
+        [Key]
         public int GalleryId { get; set; }
+        [Required]
+        [MaxLength(30)]
         public string GalleryName { get; set; }
+        [Required]
         public string GalleryDiscription { get; set; }
         public virtual List<Photo> Photos { get; set;}
 
@@ -31,6 +36,11 @@ namespace PhotoGallery.Data
         public Gallery()
         {
             Photos = new List<Photo>();
+        }
+        public Gallery(IGallery gallery)
+        {
+            GalleryName = gallery.GalleryName;
+            GalleryDiscription = gallery.GalleryDiscription;
         }
     }
 }

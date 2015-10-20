@@ -19,5 +19,6 @@ namespace PhotoGallery.Data
         public string PhotoType { get; set; }
         [Required]
         public string PhotoPath { get; set; }
+        public int GalleryId { get; set; }
     }
 }
