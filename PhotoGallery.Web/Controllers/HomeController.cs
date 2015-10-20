@@ -13,5 +13,16 @@ namespace PhotoGallery.Web.Controllers
         {
             return View();
         }
+
+        public JsonResult Galleries()
+        {
+            var result = new object { };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CreateGallery()
+        {
+            return View();
+        }
     }
 }

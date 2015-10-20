@@ -1,5 +1,4 @@
-﻿using PhotoGallery.Data.DbContexts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,16 +8,35 @@ namespace PhotoGallery.Web.Controllers
 {
     public class AccountController : Controller
     {
-
-        private GalleryDbContext _db;
-
-        public AccountController() { _db = new GalleryDbContext(); }
-
-        // GET: Account
-        public JsonResult Index()
+        
+        public ActionResult Login()
         {
-            var galleries = _db.Galleries.ToList();
-            return Json(galleries, JsonRequestBehavior.AllowGet);
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Register(int model)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return View();
         }
     }
 }
