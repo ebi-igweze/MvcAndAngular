@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Data.DbContexts
 {
-    class UserDbContext : DbContext
+    public class UserDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }

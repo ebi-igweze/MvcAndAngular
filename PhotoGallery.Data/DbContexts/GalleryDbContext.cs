@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Data.DbContexts
 {
-    class GalleryDbContext : DbContext
+    public class GalleryDbContext : DbContext
     {
+        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<Photo> Photos { get; set; }
+        public GalleryDbContext() : base("DefaultConnection") { }
     }
 }
