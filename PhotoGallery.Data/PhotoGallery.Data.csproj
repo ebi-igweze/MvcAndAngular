@@ -59,14 +59,14 @@
     <Compile Include="UserRole.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PhotoGallery.Service\PhotoGallery.Interface.csproj">
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoGallery.Interface\PhotoGallery.Interface.csproj">
       <Project>{379c4340-ed3d-4eaf-a986-bbd650589c1c}</Project>
       <Name>PhotoGallery.Interface</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
