@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="~/Content/Site.css">
+</head>
+
+<body ng-app="AccountModule">
+    <form ng-submit="ctrl.registerAction(ctrl.registerModel, login.$invalid)" ng-controller="RegisterCtrl as ctrl" name="login" id="login" class="register" novalidate>
+        <h1>Sign up</h1>
+
+        <fieldset id="inputs">
+            <label>First Name:</label>
+            <input id="firstName" ng-model="ctrl.registerModel.firstName" type="text" autofocus required placeholder="your first name" />
+            <label>Last Name:</label>
+            <input id="lastName" ng-model="ctrl.registerModel.lastName" type="text" required placeholder="your last name" />
+            <label>Email:</label>
+            <input id="username" ng-model="ctrl.registerModel.email" type="email" required placeholder="your email" />
+            <label>Password:</label>
+            <input id="password" ng-model="ctrl.registerModel.password" type="password" required placeholder="your password" />
+            <label>Confirm Password:</label>
+            <input id="cnfirmPassword" ng-model="ctrl.registerModel.confirmPassword" ng-keyup="ctrl.checkPassword(ctrl.registerModel.password, ctrl.registerModel.confirmPassword)"
+                    class="{{(ctrl.similarPassword) ? '' : 'ng-invalid' }}" type="password" autofocus required placeholder="confirm your password" />
+        </fieldset>
+        <fieldset id="actions">
+            <input id="submit" type="submit" value="Sign Up" />
+            <a>already a member?</a><a href="/account/login">Login</a>
+        </fieldset>
+    </form><script type="text/javascript" src="~/Scripts/ts/angular.js"></script>
+<script type="text/javascript" src="~/Scripts/ts/angular-route.js"></script>
+<script type="text/javascript" src="~/Scripts/ts/validator.js"></script>
+<script type="text/javascript" src="~/Scripts/ts/App.js"></script>
+<script type="text/javascript" src="~/Scripts/ts/Account.js"></script>
+<script type="text/javascript">
+   
+        var form = document.getElementById("login");
+        form.onsubmit = function (event) {
+            event.preventDefault();
+        }
+        
+        var formValidator = new validation.validator();
+
+        function textValid(event){
+            return formValidator.validateText(event);
+        }
+        function emailValid(event) {
+           return formValidator.validateEmail(event);
+        }
+
+        document.getElementById("firstName").onkeypress = textValid;
+        document.getElementById("lastName").onkeypress = textValid;
+        document.getElementById("username").onkeypress = emailValid;
+
+
+</script>
+</body>
+
+</html>
