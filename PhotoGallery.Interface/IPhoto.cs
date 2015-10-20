@@ -12,5 +12,6 @@ namespace PhotoGallery.Interface
         string PhotoName { get; set; }
         string PhotoType { get; set; }
         string PhotoPath { get; set; }
+        int GalleryId { get; set; }
     }
 }

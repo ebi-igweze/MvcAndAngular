@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhotoGallery.Service
+namespace PhotoGallery.Interface
 {
     public interface IDataRepository
     {
