@@ -52,9 +52,9 @@
     <Compile Include="DbContexts\GalleryDbContext.cs" />
     <Compile Include="DbContexts\UserDbContext.cs" />
     <Compile Include="Gallery.cs" />
-    <Compile Include="Migrations\201510201724560_initial-Gallery.cs" />
-    <Compile Include="Migrations\201510201724560_initial-Gallery.Designer.cs">
-      <DependentUpon>201510201724560_initial-Gallery.cs</DependentUpon>
+    <Compile Include="Migrations\201510201812521_secondGallery.cs" />
+    <Compile Include="Migrations\201510201812521_secondGallery.Designer.cs">
+      <DependentUpon>201510201812521_secondGallery.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
@@ -74,8 +74,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510201724560_initial-Gallery.resx">
-      <DependentUpon>201510201724560_initial-Gallery.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510201812521_secondGallery.resx">
+      <DependentUpon>201510201812521_secondGallery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

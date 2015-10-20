@@ -143,6 +143,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Galleries\Adult Photography\nude3.jpg" />
+    <Content Include="Galleries\Adult Photography\nude1.jpg" />
+    <Content Include="Galleries\Adult Photography\nude2.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -151,14 +154,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Galleries\Abstract Paintings\" />
+    <Folder Include="Galleries\Graphic Drawings\" />
+    <Folder Include="Galleries\Pencil Drawings\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
+    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PhotoGallery.Data\PhotoGallery.Data.csproj">

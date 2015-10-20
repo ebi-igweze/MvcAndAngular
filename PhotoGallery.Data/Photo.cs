@@ -12,7 +12,7 @@ namespace PhotoGallery.Data
     {
         public int PhotoId { get; set; }
         [Required]
-        [MaxLength(15)]
+        [MaxLength(25)]
         public string PhotoName { get; set; }
         [Required]
         [MaxLength(5)]
