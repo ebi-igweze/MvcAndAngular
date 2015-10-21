@@ -7,8 +7,8 @@
     <ProjectGuid>{379C4340-ED3D-4EAF-A986-BBD650589C1C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PhotoGallery.Service</RootNamespace>
-    <AssemblyName>PhotoGallery.Service</AssemblyName>
+    <RootNamespace>PhotoGallery.Interface</RootNamespace>
+    <AssemblyName>PhotoGallery.Interface</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDataRepository.cs" />
     <Compile Include="IGallery.cs" />
     <Compile Include="IPhoto.cs" />
     <Compile Include="IAppUser.cs" />
