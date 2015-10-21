@@ -9,10 +9,11 @@ namespace PhotoGallery.Web.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        public JsonResult Index()
+        public ActionResult Index()
         {
-            var galleries = VGalleryManager.GetGallery(4);
-            return Json(galleries, JsonRequestBehavior.AllowGet);
+            //var galleries = VGalleryManager.GetGallery(4);
+            //return Json(galleries, JsonRequestBehavior.AllowGet);
+            return View();
         }
 
         public JsonResult Galleries()
