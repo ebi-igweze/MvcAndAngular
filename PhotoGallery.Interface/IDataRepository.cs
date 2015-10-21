@@ -1,20 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PhotoGallery.Interface
 {
     public interface IDataRepository
     {
-        IQueryable<T> Query<T>();
-        IQueryable<T> Query<T>(params Expression<Func<T, object>>[] include);
-        T GetByID<T>(int id);
-        void Add<T>(T item);
-        void Delete<T>(T item);
-        void Update<T>(T item);
+        IQueryable<T> Query<T>() where T : class;
+        IQueryable<T> Query<T>(params Expression<Func<T, object>>[] include) where T : class;
+        T GetByID<T>(int id) where T : class;
+        void Add<T>(T item) where T : class;
+        void Delete<T>(T item) where T : class;
+        void Update<T>(T item) where T : class;
         void SaveChanges();
     }
 }
