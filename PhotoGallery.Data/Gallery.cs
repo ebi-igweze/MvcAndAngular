@@ -17,13 +17,17 @@ namespace PhotoGallery.Data
         public string GalleryName { get; set; }
         [Required]
         public string GalleryDiscription { get; set; }
-        public virtual List<Photo> Photos { get; set;}
+        [Required]
+        public string GalleryPhoto { get; set; }
+        public virtual ICollection<Photo> Photos { get; set;}
+
 
        public List<IPhoto> GalleryPhotos
         {
             get
             {
                 List<IPhoto> gPhotos = new List<IPhoto>();
+                if (Photos == null) return gPhotos;
                 foreach (var photo in Photos)
                 {
                     IPhoto currentPhoto = photo;
@@ -35,12 +39,13 @@ namespace PhotoGallery.Data
 
         public Gallery()
         {
-            Photos = new List<Photo>();
+            Photos = new HashSet<Photo>();
         }
         public Gallery(IGallery gallery)
         {
             GalleryName = gallery.GalleryName;
             GalleryDiscription = gallery.GalleryDiscription;
+            GalleryPhoto = gallery.GalleryPhoto;
         }
     }
 }

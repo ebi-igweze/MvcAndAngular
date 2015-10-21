@@ -20,5 +20,15 @@ namespace PhotoGallery.Data
         [Required]
         public string PhotoPath { get; set; }
         public int GalleryId { get; set; }
+
+        public Photo(IPhoto photo)
+        {
+            PhotoId = photo.PhotoId;
+            PhotoName = photo.PhotoName;
+            PhotoType = photo.PhotoType;
+            PhotoPath = photo.PhotoPath;
+            GalleryId = photo.GalleryId;
+        }
+        public Photo() { }
     }
 }

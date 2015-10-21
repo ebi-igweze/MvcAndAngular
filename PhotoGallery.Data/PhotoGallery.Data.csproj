@@ -53,9 +53,13 @@
     <Compile Include="DbContexts\GalleryDbContext.cs" />
     <Compile Include="DbContexts\UserDbContext.cs" />
     <Compile Include="Gallery.cs" />
-    <Compile Include="Migrations\201510201812521_secondGallery.cs" />
-    <Compile Include="Migrations\201510201812521_secondGallery.Designer.cs">
-      <DependentUpon>201510201812521_secondGallery.cs</DependentUpon>
+    <Compile Include="Migrations\201510211503460_initila-gallery.cs" />
+    <Compile Include="Migrations\201510211503460_initila-gallery.Designer.cs">
+      <DependentUpon>201510211503460_initila-gallery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201510211748378_updateGallery.cs" />
+    <Compile Include="Migrations\201510211748378_updateGallery.Designer.cs">
+      <DependentUpon>201510211748378_updateGallery.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
@@ -75,8 +79,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510201812521_secondGallery.resx">
-      <DependentUpon>201510201812521_secondGallery.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201510211503460_initila-gallery.resx">
+      <DependentUpon>201510211503460_initila-gallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510211748378_updateGallery.resx">
+      <DependentUpon>201510211748378_updateGallery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
