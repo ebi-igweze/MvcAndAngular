@@ -16,6 +16,8 @@ namespace PhotoGallery.Service
         public string GalleryName { get; set; }
         [Required]
         public string GalleryDiscription { get; set; }
+        [Required]
+        public string GalleryPhoto { get; set; }
         public List<IPhoto> GalleryPhotos { get; set; }
 
         public Gallery() { GalleryPhotos = new List<IPhoto>(); }

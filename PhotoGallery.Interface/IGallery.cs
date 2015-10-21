@@ -11,6 +11,7 @@ namespace PhotoGallery.Interface
         int GalleryId { get; set; }
         string GalleryName { get; set; }
         string GalleryDiscription { get; set; }
+        string GalleryPhoto { get; set; }
         List<IPhoto> GalleryPhotos{ get; }
     }
 }
