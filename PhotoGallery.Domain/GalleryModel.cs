@@ -12,6 +12,7 @@ namespace PhotoGallery.Domain
         public int GalleryId { get; set; }
         public string GalleryName { get; set; }
         public string GalleryDiscription { get; set; }
+        public string GalleryPhoto { get; set; }
         public List<IPhoto> GalleryPhotos { get; set; }
         
         public GalleryModel(IGallery gallery)

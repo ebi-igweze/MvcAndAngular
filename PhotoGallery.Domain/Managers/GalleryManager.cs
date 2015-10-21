@@ -1,75 +1,56 @@
 ﻿using PhotoGallery.Interface;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace PhotoGallery.Domain.Managers
 {
-    public class GalleryManager:IGalleryManager
+    public class GalleryManager
     {
-        private IDataRepository _db;
-        public GalleryManager(IDataRepository db)
+        private readonly IGalleryManager _gm;
+        public GalleryManager(IGalleryManager gm) { _gm = gm; }
+
+        public void AddGallery(IGallery gal)
         {
-            _db = db;
+            _gm.AddGallery(gal);
+        }
+
+        public void AddPhoto(IPhoto photo)
+        {
+            _gm.AddPhoto(photo);
         }
 
         public List<GalleryModel> GetGalleries()
         {
-            var galleries =  _db.Query<IGallery>().Select(g => g).ToList();
-            List<GalleryModel> newGalleries = new List<GalleryModel>();
-
-            foreach (var gallery in galleries)
+            var Igalleries = _gm.GetGalleries();
+            var newGalleries = new List<GalleryModel>();
+            foreach (var gal in Igalleries)
             {
-                var newGallery = new GalleryModel(gallery);
+                var newGallery = new GalleryModel(gal);
                 newGalleries.Add(newGallery);
             }
+
             return newGalleries;
         }
 
         public IGallery GetGallery(int Id)
         {
-            return _db.GetByID<IGallery>(Id);
+            return _gm.GetGallery(Id);
         }
 
-        public void AddGallery(IGallery gallery)
+        public void RemoveGallery(IGallery gal)
         {
-            _db.Add(gallery);
-            _db.SaveChanges();
-        }
-
-        public void RemoveGallery(IGallery gallery)
-        {
-            _db.Delete(gallery);
-            _db.SaveChanges();
-        }
-
-        public void UpdateGallery(IGallery gallery)
-        {
-            _db.Update(gallery);
-            _db.SaveChanges();
-        }
-
-        public void AddPhoto(IPhoto photo)
-        {
-            _db.Update(photo);
-            _db.SaveChanges();
+            _gm.RemoveGallery(gal);
         }
 
         public void RemovePhoto(IPhoto photo)
         {
-            _db.Delete(photo);
-            _db.SaveChanges();
+            _gm.RemovePhoto(photo);
         }
 
-        List<IGallery> IGalleryManager.GetGalleries()
+        public void UpdateGallery(IGallery gal)
         {
-            List<GalleryModel> gals = GetGalleries();
-            List<IGallery> newGalleries = new List<IGallery>();
-
-            foreach (var gallery in gals)
-            {
-                newGalleries.Add(gallery);
-            }
-            return newGalleries;
+            _gm.UpdateGallery(gal);
         }
     }
 }
