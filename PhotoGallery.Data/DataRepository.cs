@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 
 namespace PhotoGallery.Data
 {
-    class DataRepository :IDataRepository
+    public class DataRepository :IDataRepository
     {
         private readonly DbContext _dbContext;
         public DataRepository( DbContext db)

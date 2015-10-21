@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Service
 {
-    class Gallery : IGallery
+    public class Gallery : IGallery
     {
         public int  GalleryId { get; set; }
         [Required]

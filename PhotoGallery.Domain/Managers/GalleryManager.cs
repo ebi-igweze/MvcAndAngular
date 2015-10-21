@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace PhotoGallery.Domain.Managers
 {
-    class GalleryManager:IGalleryManager
+    public class GalleryManager:IGalleryManager
     {
         private IDataRepository _db;
         public GalleryManager(IDataRepository db)

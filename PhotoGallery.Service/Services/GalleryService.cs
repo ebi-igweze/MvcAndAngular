@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Service
 {
-    class GalleryService
+    public class GalleryService
     {
         private readonly IGalleryManager _gm;
 
