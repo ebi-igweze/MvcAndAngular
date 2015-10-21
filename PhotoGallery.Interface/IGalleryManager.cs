@@ -9,6 +9,7 @@ namespace PhotoGallery.Interface
     public interface IGalleryManager
     {
         List<IGallery> GetGalleries();
+        IGallery GetGallery(int Id);
         void AddGallery(IGallery gal);
         void RemoveGallery(IGallery gal);
         void UpdateGallery(IGallery gal);

@@ -13,7 +13,7 @@ namespace PhotoGallery.Domain
         public string GalleryName { get; set; }
         public string GalleryDiscription { get; set; }
         public List<IPhoto> GalleryPhotos { get; set; }
-
+        
         public GalleryModel(IGallery gallery)
         {
             GalleryId = gallery.GalleryId;

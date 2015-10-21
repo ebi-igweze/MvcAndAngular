@@ -25,6 +25,11 @@ namespace PhotoGallery.Domain.Managers
             return newGalleries;
         }
 
+        public IGallery GetGallery(int Id)
+        {
+            return _db.GetByID<IGallery>(Id);
+        }
+
         public void AddGallery(IGallery gallery)
         {
             _db.Add(gallery);

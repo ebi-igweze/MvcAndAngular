@@ -27,6 +27,10 @@ namespace PhotoGallery.Service
 
             return newGalleries;
         }
+        public Gallery GetGallery(int id)
+        {
+            return new Gallery(_gm.GetGallery(id));
+        }
 
         public void AddGallery(Gallery gal)
         {
