@@ -120,6 +120,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\PhotoGallery.mdf" />
+    <Content Include="App_Data\PhotoGallery_log.ldf">
+      <DependentUpon>PhotoGallery.mdf</DependentUpon>
+    </Content>
+    <Content Include="Galleries\Adult Photography\home.jpg" />
     <Content Include="packages.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -140,10 +145,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\PhotoGallery.mdf" />
-    <Content Include="App_Data\PhotoGallery_log.ldf">
-      <DependentUpon>PhotoGallery.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -165,13 +166,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\PhotoGalleryManager.cs" />
+    <Compile Include="Managers\VGalleryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Galleries\Abstract Paintings\" />
     <Folder Include="Galleries\Graphic Drawings\" />
     <Folder Include="Galleries\Pencil Drawings\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account.ts" />
@@ -190,6 +192,14 @@
     <ProjectReference Include="..\PhotoGallery.Data\PhotoGallery.Data.csproj">
       <Project>{cf043089-47ec-4ccc-9c65-e23c342c429d}</Project>
       <Name>PhotoGallery.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoGallery.Domain\PhotoGallery.Domain.csproj">
+      <Project>{825b412c-6d41-400e-bdc0-2cb34502abb8}</Project>
+      <Name>PhotoGallery.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoGallery.Interface\PhotoGallery.Interface.csproj">
+      <Project>{379c4340-ed3d-4eaf-a986-bbd650589c1c}</Project>
+      <Name>PhotoGallery.Interface</Name>
     </ProjectReference>
     <ProjectReference Include="..\PhotoGallery.Service\PhotoGallery.Service.csproj">
       <Project>{bbc480d3-7533-4cb5-b33f-9c687c22f6f0}</Project>

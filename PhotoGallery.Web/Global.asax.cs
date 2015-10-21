@@ -1,5 +1,7 @@
-﻿using System;
+﻿using PhotoGallery.Data.DbContexts;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,7 +10,7 @@ using System.Web.Routing;
 
 namespace PhotoGallery.Web
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -16,6 +18,7 @@ namespace PhotoGallery.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<GalleryDbContext>());
         }
     }
 }
