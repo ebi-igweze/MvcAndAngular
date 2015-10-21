@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IDataRepository.cs" />
     <Compile Include="IGallery.cs" />
+    <Compile Include="IGalleryManager.cs" />
     <Compile Include="IPhoto.cs" />
     <Compile Include="IAppUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

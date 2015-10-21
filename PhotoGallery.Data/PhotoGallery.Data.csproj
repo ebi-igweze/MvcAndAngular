@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataRepository.cs" />
     <Compile Include="DbContexts\GalleryDbContext.cs" />
     <Compile Include="DbContexts\UserDbContext.cs" />
     <Compile Include="Gallery.cs" />

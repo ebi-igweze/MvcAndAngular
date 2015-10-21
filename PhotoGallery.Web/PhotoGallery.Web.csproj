@@ -186,6 +186,16 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoGallery.Data\PhotoGallery.Data.csproj">
+      <Project>{cf043089-47ec-4ccc-9c65-e23c342c429d}</Project>
+      <Name>PhotoGallery.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhotoGallery.Service\PhotoGallery.Service.csproj">
+      <Project>{bbc480d3-7533-4cb5-b33f-9c687c22f6f0}</Project>
+      <Name>PhotoGallery.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
