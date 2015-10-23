@@ -20,6 +20,7 @@ namespace PhotoGallery.Domain
             GalleryId = gallery.GalleryId;
             GalleryName = gallery.GalleryName;
             GalleryDiscription = gallery.GalleryDiscription;
+            GalleryPhoto = gallery.GalleryPhoto;
             GalleryPhotos = gallery.GalleryPhotos;
         }
     }

@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201510211748378_updateGallery.Designer.cs">
       <DependentUpon>201510211748378_updateGallery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201510222133246_initilise-gallery.cs" />
+    <Compile Include="Migrations\201510222133246_initilise-gallery.Designer.cs">
+      <DependentUpon>201510222133246_initilise-gallery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510211748378_updateGallery.resx">
       <DependentUpon>201510211748378_updateGallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201510222133246_initilise-gallery.resx">
+      <DependentUpon>201510222133246_initilise-gallery.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
