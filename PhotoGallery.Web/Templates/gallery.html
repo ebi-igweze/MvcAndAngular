@@ -3,22 +3,20 @@
     <div class="col-lg-12">
         <h1 class="page-header">
             Photo Gallery:
-            <small>{{ctrl.currentGallery.galleryName}}</small>
+            <small>{{ctrl.currentGallery.GalleryName}}</small>
         </h1>
     </div>
 </div>
 <!-- /.row -->
-<div class="row">
-    <h2>{{ctrl.currentGallery.galleryName}}</h2>
-    <div class="col-md-4 portfolio-item" ng-repeat="photo in ctrl.currentGallery.galleryPhotos">
-        <a ng-click="{{ctrl.set}}" href="#/galleries/gallery/photo">
-            <img class="img-responsive" ng-src="{{photo.photoPath}}" alt="{{photo.photoName}}">
+<div class="row" ng-init="galleryID = ctrl.currentGalleryIndex">
+    <div class="col-md-4 portfolio-item" ng-repeat="photo in ctrl.currentGallery.GalleryPhotos">
+        <a  ng-href="#/galleries/gallery/{{ctrl.currentGalleryIndex+1}}/photo/{{$index + 1}}">
+            <img class="img-responsive photo" ng-src="{{photo.PhotoPath}}" alt="{{photo.PhotoName}}">
         </a>
         <h3>
-            <a href="#">{{photo.photoName}}</a>
+            <a ng-href="#/galleries/gallery/{{ctrl.currentGalleryIndex+1}}/photo/{{$index + 1}}">{{photo.PhotoName}}</a>
         </h3>
-        <p>{{photo.photoDiscription}}.</p>
+        <p>{{photo.PhotoDiscription}}.</p>
     </div>
 </div>
-
-<a href="#/galleries">back</a>
+<a href="#/galleries/gallery">back</a>

@@ -1,48 +1,40 @@
-﻿module home {
-    class photo {
-        public photoName: string;
-        public photoType: string;
-        public photoPath: string;
-        public photoDiscription: string;
-    }
-    class gallery {
-        public galleryName: string;
-        public galleryPhoto: photo;
-        public galleryDescription: string;
-        public galleryPhotos: Array<photo>;
-    }
-
+﻿module gallery.home {
+    
     class photoGallery {
-        private galleries: Array<gallery>;
-        private http;
-        private url;
-        private currentGallery: gallery;
-        private currentPhoto: photo;
-        private photoStyle: any;
-        constructor($http) {
-            this.http = $http;
-            this.url = "/home/galleries";
-            this.getPhotos();
-            this.currentPhoto = this.galleries[0].galleryPhoto[0] || { photoName: '', photoType: '', photoPath: '', photoDiscription: '' };
-            this.photoStyle = {};
+        private galleries: Array<any>;
+        private galleryService: any;
+        private currentPhoto: any;
+        private routeParams: any;
+        private currentGallery: any;
+        private currentGalleryIndex: any;
+        constructor(GalleryService, $routeParams, $scope) {
+            this.galleryService = GalleryService;
+            this.routeParams = $routeParams
+            this.galleries = [];
+            this.getGalleries();
+            this.currentGallery = {};
+            this.currentPhoto = {};
+            this.currentGalleryIndex = 0;
         }
 
-        private getPhotos(): void {
-            var p = this.http.get(this.url);
-            p.then((data) => { this.galleries = data.data; });
+        private getGalleries(): void {
 
+            var promise = this.galleryService.allGalleries();
+            promise.then( (data) => { this.galleries = data.data; this.setAll(); });
         }
 
-        private setGallery(index: number): void {
-            this.currentGallery = this.galleries[index];
+        private setAll(): void {
+            this.setGallery();
+            this.setPhoto();
         }
 
-        private setPhoto(index: number): void {
-            this.currentPhoto = this.currentGallery.galleryPhotos[index];
-            this.photoStyle = { background: 'url(' + this.currentPhoto.photoPath + ')' };
+        private setGallery(): void {
+            this.currentGalleryIndex = (this.routeParams.galleryId - 1) || 0;
+            this.currentGallery = this.galleries[this.currentGalleryIndex];
         }
-        
+        private setPhoto(): void {
+            this.currentPhoto = this.currentGallery.GalleryPhotos[(this.routeParams.photoId - 1) || 0];
+        }
     }
-    homeApp.controller("GalleryCtrl", ['$http', photoGallery]);
-
+    homeApp.controller("GalleryCtrl", ['GalleryService','$routeParams', photoGallery]);
 }

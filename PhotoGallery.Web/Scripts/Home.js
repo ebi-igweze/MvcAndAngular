@@ -1,37 +1,36 @@
-var home;
-(function (home) {
-    var photo = (function () {
-        function photo() {
-        }
-        return photo;
-    })();
-    var gallery = (function () {
-        function gallery() {
-        }
-        return gallery;
-    })();
-    var photoGallery = (function () {
-        function photoGallery($http) {
-            this.http = $http;
-            this.url = "/home/galleries";
-            this.getPhotos();
-            this.currentPhoto = this.galleries[0].galleryPhoto[0] || { photoName: '', photoType: '', photoPath: '', photoDiscription: '' };
-            this.photoStyle = {};
-        }
-        photoGallery.prototype.getPhotos = function () {
-            var _this = this;
-            var p = this.http.get(this.url);
-            p.then(function (data) { _this.galleries = data.data; });
-        };
-        photoGallery.prototype.setGallery = function (index) {
-            this.currentGallery = this.galleries[index];
-        };
-        photoGallery.prototype.setPhoto = function (index) {
-            this.currentPhoto = this.currentGallery.galleryPhotos[index];
-            this.photoStyle = { background: 'url(' + this.currentPhoto.photoPath + ')' };
-        };
-        return photoGallery;
-    })();
-    homeApp.controller("GalleryCtrl", ['$http', photoGallery]);
-})(home || (home = {}));
+var gallery;
+(function (gallery) {
+    var home;
+    (function (home) {
+        var photoGallery = (function () {
+            function photoGallery(GalleryService, $routeParams, $scope) {
+                this.galleryService = GalleryService;
+                this.routeParams = $routeParams;
+                this.galleries = [];
+                this.getGalleries();
+                this.currentGallery = {};
+                this.currentPhoto = {};
+                this.currentGalleryIndex = 0;
+            }
+            photoGallery.prototype.getGalleries = function () {
+                var _this = this;
+                var promise = this.galleryService.allGalleries();
+                promise.then(function (data) { _this.galleries = data.data; _this.setAll(); });
+            };
+            photoGallery.prototype.setAll = function () {
+                this.setGallery();
+                this.setPhoto();
+            };
+            photoGallery.prototype.setGallery = function () {
+                this.currentGalleryIndex = (this.routeParams.galleryId - 1) || 0;
+                this.currentGallery = this.galleries[this.currentGalleryIndex];
+            };
+            photoGallery.prototype.setPhoto = function () {
+                this.currentPhoto = this.currentGallery.GalleryPhotos[(this.routeParams.photoId - 1) || 0];
+            };
+            return photoGallery;
+        })();
+        homeApp.controller("GalleryCtrl", ['GalleryService', '$routeParams', photoGallery]);
+    })(home = gallery.home || (gallery.home = {}));
+})(gallery || (gallery = {}));
 //# sourceMappingURL=Home.js.map

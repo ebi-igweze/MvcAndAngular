@@ -124,8 +124,28 @@
     <Content Include="App_Data\PhotoGallery_log.ldf">
       <DependentUpon>PhotoGallery.mdf</DependentUpon>
     </Content>
+    <Content Include="Galleries\Abstract Paintings\home.jpg" />
+    <Content Include="Galleries\Abstract Paintings\abstract2.jpg" />
+    <Content Include="Galleries\Abstract Paintings\abstract3.jpg" />
+    <Content Include="Galleries\Abstract Paintings\abstract1.jpg" />
     <Content Include="Galleries\Adult Photography\home.jpg" />
+    <Content Include="Galleries\Graphic Drawings\home.jpg" />
+    <Content Include="Galleries\Graphic Drawings\graphic1.jpg" />
+    <Content Include="Galleries\Graphic Drawings\graphic2.jpg" />
+    <Content Include="Galleries\Graphic Drawings\graphic3.jpg" />
+    <Content Include="Galleries\Pencil Drawings\pencil1.jpg" />
+    <Content Include="Galleries\Pencil Drawings\pencil2.jpg" />
+    <Content Include="Galleries\Pencil Drawings\home.jpg" />
+    <Content Include="Galleries\Pencil Drawings\pencil3.jpg" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\Account.js" />
+    <Content Include="Scripts\App.js" />
+    <Content Include="Scripts\GalleryService.js" />
+    <Content Include="Scripts\Home.js" />
+    <Content Include="Scripts\validator.js" />
+    <Content Include="Templates\galleries.html" />
+    <Content Include="Templates\gallery.html" />
+    <Content Include="Templates\photo.html" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -137,6 +157,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\Account.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -170,11 +191,7 @@
     <Compile Include="Managers\VGalleryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Galleries\Abstract Paintings\" />
-    <Folder Include="Galleries\Graphic Drawings\" />
-    <Folder Include="Galleries\Pencil Drawings\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\Account.ts" />
     <TypeScriptCompile Include="Scripts\App.ts" />

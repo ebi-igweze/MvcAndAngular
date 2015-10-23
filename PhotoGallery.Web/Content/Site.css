@@ -10,3 +10,10 @@ footer {
     margin: 50px 0;
 }
 
+@media screen and (min-width : 769px ){
+     .photo {
+         min-height: 330px;
+         max-height: 340px;
+    }
+}
+

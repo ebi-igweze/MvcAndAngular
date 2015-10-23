@@ -6,17 +6,17 @@ var homeApp = angular.module("PhotoGalleryModule", ['ngRoute']);
 homeApp.config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/galleries', {
-            templateUrl: 'Templates/galleries.html',
+            templateUrl: '/Templates/galleries.html',
             controller: 'GalleryCtrl',
             controllerAs: 'ctrl'
         })
-            .when('/galleries/gallery', {
-            templateUrl: 'Templates/gallery.html',
+            .when('/galleries/gallery/:galleryId', {
+            templateUrl: '/Templates/gallery.html',
             controller: 'GalleryCtrl',
             controllerAs: 'ctrl',
         })
-            .when('galleries/gallery', {
-            templateUrl: 'Templates/photo.html',
+            .when('/galleries/gallery/:galleryId/photo/:photoId', {
+            templateUrl: '/Templates/photo.html',
             controller: 'GalleryCtrl',
             controllerAs: 'ctrl'
         })

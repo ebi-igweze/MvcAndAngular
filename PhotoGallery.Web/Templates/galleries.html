@@ -9,15 +9,16 @@
 </div>
 <!-- /.row -->
 <!-- Projects Row -->
-<div class="row" ng-repeat="gallery in ctrl.galleries">
-    <div class="col-md-4 portfolio-item">
-        <a ng-click="{{ctrl.setGallery($index)}}" href="#/galleries/gallery">
-            <img class="img-responsive" ng-src="{{gallery.galleryPhoto}}" alt="{{gallery.galleryName}}">
+<div class="row">
+    <div class="col-md-4 portfolio-item"  ng-repeat="gallery in ctrl.galleries">
+        <a href="#/galleries/gallery/{{$index + 1}}">
+            <img class="img-responsive photo" ng-src="{{gallery.GalleryPhoto}}" alt="{{gallery.GalleryName}}">
         </a>
         <h3>
-            <a ng-click="{{ctrl.setGallery($index)}}" href="#/galleries/gallery">{{gallery.photoGalleryName}}</a>
+            <a href="#/galleries/gallery/{{$index + 1}}">{{gallery.GalleryName}}</a>
         </h3>
-        <p>{{gallery.galleryDiscription}}</p>
+        <p>{{gallery.GalleryDiscription}}</p>
+        <hr/>
     </div>
 </div>
 <!-- /.row -->
