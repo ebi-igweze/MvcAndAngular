@@ -66,6 +66,11 @@
       <DependentUpon>201510222133246_initilise-gallery.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\UserMigrations\201510241550446_initialUsers.cs" />
+    <Compile Include="Migrations\UserMigrations\201510241550446_initialUsers.Designer.cs">
+      <DependentUpon>201510241550446_initialUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\UserMigrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs" />
@@ -91,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201510222133246_initilise-gallery.resx">
       <DependentUpon>201510222133246_initilise-gallery.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\UserMigrations\201510241550446_initialUsers.resx">
+      <DependentUpon>201510241550446_initialUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
