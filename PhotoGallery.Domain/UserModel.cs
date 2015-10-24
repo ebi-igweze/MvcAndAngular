@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace PhotoGallery.Domain
 {
-    public class UserModel
+    public class UserModel : IAppUser
     {
         public int UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
         public string [] Roles { get; set; }
 
         public UserModel (IAppUser user)
@@ -21,6 +22,7 @@ namespace PhotoGallery.Domain
             FirstName = user.FirstName;
             LastName = user.LastName;
             Password = user.Password;
+            Email = user.Email;
             Roles = user.Roles;
         }
     }
