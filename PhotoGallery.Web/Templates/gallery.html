@@ -9,14 +9,16 @@
 </div>
 <!-- /.row -->
 <div class="row" ng-init="galleryID = ctrl.currentGalleryIndex">
+    <div class="col-sm-12">
+        <a href="galleries">back</a>
+    </div>
     <div class="col-md-4 portfolio-item" ng-repeat="photo in ctrl.currentGallery.GalleryPhotos">
-        <a  ng-href="#/galleries/gallery/{{ctrl.currentGalleryIndex+1}}/photo/{{$index + 1}}">
+        <a ng-href="galleries/gallery/{{ctrl.currentGalleryIndex + 1}}/photo/{{$index + 1}}">
             <img class="img-responsive photo" ng-src="{{photo.PhotoPath}}" alt="{{photo.PhotoName}}">
         </a>
         <h3>
-            <a ng-href="#/galleries/gallery/{{ctrl.currentGalleryIndex+1}}/photo/{{$index + 1}}">{{photo.PhotoName}}</a>
+            <a ng-href="galleries/gallery/{{ctrl.currentGalleryIndex+1}}/photo/{{$index + 1}}">{{photo.PhotoName}}</a>
         </h3>
         <p>{{photo.PhotoDiscription}}.</p>
     </div>
-</div>
-<a href="#/galleries/gallery">back</a>
+    </div>

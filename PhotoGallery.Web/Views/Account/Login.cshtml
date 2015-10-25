@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-@model PhotoGallery.Web.ViewModels.LoginView
+@model PhotoGallery.Service.Login
 
 <!DOCTYPE html>
 <html>
@@ -11,16 +11,17 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale = 1.0">
     <title>login</title>
-    <link rel="stylesheet" href="~/Content/Site.css">
+    <link rel="stylesheet" href="~/Content/forms.css">
 </head>
 
 <body ng-app="AccountModule">
-    <form ng-submit="ctrl.loginAction(ctrl.loginModel, login.$invalid)" ng-controller="LoginCtrl as ctrl" name="login" id="login" action="" novalidate>
+    <!--form ng-submit="ctrl.loginAction(ctrl.loginModel, login.$invalid)" ng-controller="LoginCtrl as ctrl" name="login" id="login" action="" novalidate-->
+    <form name="login" id="login" action="/Account/Login" method="post">
         <h1>Log In</h1>
 
         <fieldset id="inputs">
-            <input ng-model="ctrl.loginModel.email" id="username" type="email" autofocus required placeholder="your email" />
-            <input ng-model="ctrl.loginModel.password" ng-keypress="ctrl.emailInput" id="password" type="password" required placeholder="your password" />
+            <input ng-model="ctrl.loginModel.email" name="Email" id="username" type="email" autofocus required placeholder="your email" />
+            <input ng-model="ctrl.loginModel.password" name="Password" ng-keypress="ctrl.emailInput" id="password" type="password" required placeholder="your password" />
         </fieldset>
         <fieldset id="actions">
             <input id="submit" type="submit" value="Log in" />
@@ -28,11 +29,11 @@
         </fieldset>
     </form>
 
-    <script type="text/javascript" src="~/Scripts/ts/angular.js"></script>
-    <script type="text/javascript" src="~/Scripts/ts/angular-route.js"></script>
-    <script type="text/javascript" src="~/Scripts/ts/validator.js"></script>
-    <script type="text/javascript" src="~/Scripts/ts/App.js"></script>
-    <script type="text/javascript" src="~/Scripts/ts/Account.js"></script>
+    <!--script type="text/javascript" src="~/Scripts/angular.js"></script>
+    <script type="text/javascript" src="~/Scripts/angular-route.js"></script>
+    <script type="text/javascript" src="~/Scripts/validator.js"></script>
+    <script type="text/javascript" src="~/Scripts/App.js"></script>
+    <script type="text/javascript" src="~/Scripts/Account.js"></script>
     <script type="text/javascript" >
         var form = document.getElementById("login");
         form.onsubmit = function (event) {
@@ -45,7 +46,7 @@
             return formValidator.validateEmail(event);
         }
 
-    </script>
+    </script-->
 </body>
 
 </html>

@@ -9,7 +9,7 @@ using System.Web;
 
 namespace PhotoGallery.Web.Managers
 {
-    public class UserStore: IUserStore<User>, IUserRoleStore<User>, IUserPasswordStore<User>
+    public class UserStore: IUserStore<User>, IUserRoleStore<User>, IUserPasswordStore<User>, IUserLockoutStore<User, string>, IUserTwoFactorStore<User, string>
     {
         private IdentityManager _manager;
 
@@ -28,6 +28,10 @@ namespace PhotoGallery.Web.Managers
            return Task.Run(() => _manager.CreateUser(user));
         }
 
+        public void Create(User user)
+        {
+            _manager.CreateUser(user);
+        }
         public Task DeleteAsync(User user)
         {
             return Task.Run(() => _manager.DeleteUser(user));
@@ -35,22 +39,28 @@ namespace PhotoGallery.Web.Managers
 
         public void Dispose()
         {
-            this.Dispose();
+            
         }
 
         public Task<User> FindByIdAsync(string userId)
         {
-            return Task.FromResult(new User(_manager.FindById(userId)));
+            var userModel = _manager.FindById(userId);
+            if (userModel == null)return Task.FromResult(new User());
+
+            return Task.FromResult(new User(userModel));
         }
 
         public Task<User> FindByNameAsync(string userName)
         {
-            return Task.FromResult(new User(_manager.FindByName(userName)));
+            var userModel = _manager.FindByName(userName);
+            if(userModel == null)return Task.FromResult(new User());
+
+            return Task.FromResult(new User(userModel));
         }
 
         public Task<string> GetPasswordHashAsync(User user)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(_manager.GetPasswordHash(user));
         }
 
         public Task<IList<string>> GetRolesAsync(User user)
@@ -82,6 +92,58 @@ namespace PhotoGallery.Web.Managers
         public Task UpdateAsync(User user)
         {
             return Task.Run(() => _manager.UpdateUser(user));
+        }
+
+        public Task<DateTimeOffset> GetLockoutEndDateAsync(User user)
+        {
+            //TODO
+            return null;
+        }
+
+        public Task SetLockoutEndDateAsync(User user, DateTimeOffset lockoutEnd)
+        {
+            //TODO
+            return Task.Run(() => { return; });
+        }
+
+        public Task<int> IncrementAccessFailedCountAsync(User user)
+        {
+            //TODO
+            return null;            
+        }
+
+        public Task ResetAccessFailedCountAsync(User user)
+        {
+            //TODO
+            return Task.Run(() => { return; });
+        }
+
+        public Task<int> GetAccessFailedCountAsync(User user)
+        {
+            //TODO
+            return Task.FromResult(0);
+        }
+
+        public Task<bool> GetLockoutEnabledAsync(User user)
+        {
+            //TODO
+            return Task.FromResult(false);
+        }
+
+        public Task SetLockoutEnabledAsync(User user, bool enabled)
+        {
+            //TODO
+            return Task.Run(() => { return; });
+        }
+
+        public Task SetTwoFactorEnabledAsync(User user, bool enabled)
+        {
+            return Task.Run(() => { return; });
+        }
+
+        public Task<bool> GetTwoFactorEnabledAsync(User user)
+        {
+            return Task.FromResult(false);
         }
     }
 }

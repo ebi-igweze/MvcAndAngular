@@ -2,55 +2,48 @@
     class register {
         private registerModel = {}
         private http: any;
-        private validator: validation.validator;
         private url: string;
+        private passwordNotMatch: boolean;
+        private invalidPassword: boolean;
+        private window: any;
+        private location: angular.ILocationService;
 
-        private similarPassword: boolean;
-
-        constructor(ValidatorFactory: validation.validator, $http: any) {
-            this.similarPassword = true;
+        constructor($http: any, $window: any, $location: angular.ILocationService) {
+            this.invalidPassword = false;
+            this.passwordNotMatch = false;
             this.http = $http;
-            this.validator = ValidatorFactory;
             this.url = "/account/register"
+            this.window = $window;
+            this.window = $location;
         }
 
-        private emailInput(event): boolean {
-            return this.validator.validateEmail(event);
-        }
-
-        private textInput(event): boolean {
-            return this.validator.validateText(event);
-        }
-
-        private passwordInput(event): boolean {
-            return this.validator.validateTextAndNumbers(event);
-        }
-
-        private registerAction(model: any, forminvalid: boolean): void {
+       private registerAction(model: any, forminvalid: boolean): void {
             if (!forminvalid) {
-               this.http.post(this.url,model);
-            }
+                var promise = this.http.post(this.url,model);
+                promise.then((data) => {
+                    //this.window.location.href = "";
+                    this.location.path("/Account/Login");
+                });
+           }
+            // toast "ensure that all the fields are valid before submiting"
         }
 
         private checkPassword(pass1: string, pass2: string): void {
             if (pass1 === pass2) {
-                this.similarPassword = true;
+                this.passwordNotMatch = false;
             } else {
-                this.similarPassword = false;
+                this.passwordNotMatch = true;
             }
-
         }
     }
 
     class login {
-        private validator: validation.validator;
         private http: any;
         private textRequired: boolean;
         private url: string;
 
-        constructor(ValidatorFactory: validation.validator, $http: any) {
+        constructor($http: any) {
             this.http = $http;
-            this.validator = ValidatorFactory;
             this.textRequired = false;
             this.url = "/account/login"
         }
@@ -65,16 +58,7 @@
             }
             this.textRequired = true;
         }
-        
-
-        private emailInput(event: any): boolean {
-            return this.validator.validateEmail(event);
-        }
-
-        private passwordInput(event: any): boolean {
-            return this.validator.validateTextAndNumbers(event);
-        }
     }
-    accountApp.controller("LoginCtrl", ["ValidatorFactory", "$http", login])
-        .controller("RegisterCtrl", ["ValidatorFactory", "$http", register])
+    accountApp.controller("LoginCtrl", ["$http", login])
+        .controller("RegisterCtrl", ["$http", register])
 }

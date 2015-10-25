@@ -44,7 +44,10 @@ namespace PhotoGallery.Web.Managers
 
         public UserModel FindById(string userId)
         {
-            var user = _db.Query<User>().Where(u => u.UserId == int.Parse(userId)).FirstOrDefault();
+            int id = int.Parse(userId);
+            var user = _db.Query<User>().Where(u => u.UserId == id).FirstOrDefault();
+            if (isNull(user)) return null;
+
             return new UserModel(user);
         }
 
@@ -52,6 +55,8 @@ namespace PhotoGallery.Web.Managers
         public UserModel FindByName(string userName)
         {
             var user = _db.Query<User>().Where(u => u.Email == userName).FirstOrDefault();
+            if (isNull(user)) return null;
+
             return new UserModel(user);
         }
 
@@ -78,18 +83,25 @@ namespace PhotoGallery.Web.Managers
             var userRole = _db.Query<UserRole>().Where(ur => ur.UserId == user.UserId && ur.RoleId == role.RoleId).SingleOrDefault();
 
             _db.Delete(userRole);
+            _db.SaveChanges();
         }
 
         // new Implementation
         public void UpdateUser (Service.User user)
         {
             _db.Update(new User(user));
+            _db.SaveChanges();
         }
 
         //new implementation
         public void CreateUser(Service.User user)
         {
             _db.Add(new User(user));
+            _db.SaveChanges();
+
+            var savedUser = FindByName(user.Email);
+            user.UserId = savedUser.UserId;
+            return;
         }
 
         public string GetPasswordHash(Service.User user)
@@ -111,7 +123,6 @@ namespace PhotoGallery.Web.Managers
         public void SetPasswordHash (Service.User user, string passwordHash)
         {
             user.Password = passwordHash;
-            _db.Update(new User(user));
         }
 
 
@@ -119,6 +130,11 @@ namespace PhotoGallery.Web.Managers
         public void DeleteUser(Service.User user)
         {
             _db.Delete(new User(user));
+            _db.SaveChanges();
+        }
+        private bool isNull(object o)
+        {
+            return o == null;
         }
     }
 }

@@ -44,5 +44,6 @@ namespace PhotoGallery.Service
             Email = user.Email;
             Password = user.Password;
         }
+        public User() { }
     }
 }

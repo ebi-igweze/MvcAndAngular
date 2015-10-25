@@ -3,12 +3,13 @@
     Layout = null;
 }
 
+@model PhotoGallery.Service.User
 <!doctype html>
 <html>
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-    <title>login</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="~/Content/forms.css">
 </head>
 
@@ -25,19 +26,20 @@
             <input id="username" ng-model="ctrl.registerModel.email" type="email" required placeholder="your email" />
             <label>Password:</label>
             <input id="password" ng-model="ctrl.registerModel.password" type="password" required placeholder="your password" />
+            <label ng-show="ctrl.invalidPassword" class="red">password must be alphanumeric with Capital and non digit charater: e.g. P@ssw0rd1</label><br />
             <label>Confirm Password:</label>
-            <input id="cnfirmPassword" ng-model="ctrl.registerModel.confirmPassword" ng-keyup="ctrl.checkPassword(ctrl.registerModel.password, ctrl.registerModel.confirmPassword)"
-                    class="{{(ctrl.similarPassword) ? '' : 'ng-invalid' }}" type="password" autofocus required placeholder="confirm your password" />
+            <input id="cnfirmPassword" ng-model="ctrl.registerModel.confirmPassword" ng-keypress="ctrl.checkPassword(ctrl.registerModel.password, ctrl.registerModel.confirmPassword)" type="password" autofocus required placeholder="confirm your password" />
+            <label ng-show="ctrl.passwordsNotMatch" class="red">passwords do not match</label>
         </fieldset>
         <fieldset id="actions">
             <input id="submit" type="submit" value="Sign Up" />
             <a>already a member?</a><a href="/account/login">Login</a>
         </fieldset>
-    </form><script type="text/javascript" src="~/Scripts/ts/angular.js"></script>
-<script type="text/javascript" src="~/Scripts/ts/angular-route.js"></script>
-<script type="text/javascript" src="~/Scripts/ts/validator.js"></script>
-<script type="text/javascript" src="~/Scripts/ts/App.js"></script>
-<script type="text/javascript" src="~/Scripts/ts/Account.js"></script>
+    </form><script type="text/javascript" src="~/Scripts/angular.js"></script>
+<script type="text/javascript" src="~/Scripts/angular-route.js"></script>
+<script type="text/javascript" src="~/Scripts/validator.js"></script>
+<script type="text/javascript" src="~/Scripts/App.js"></script>
+<script type="text/javascript" src="~/Scripts/Account.js"></script>
 <script type="text/javascript">
    
         var form = document.getElementById("login");

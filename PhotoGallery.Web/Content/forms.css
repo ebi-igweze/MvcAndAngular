@@ -1,4 +1,4 @@
-﻿
+﻿register
 
 html, body
 {
@@ -63,7 +63,7 @@ body
           0 7px 0 rgba(0, 0, 0, .2);
 }
 #login.register{
-	height: 480px;
+	height: 510px;
 	top: 30%;
 }
 
@@ -258,3 +258,4 @@ h1:after, h1:before
 }
 
 
+.red{color: red;}

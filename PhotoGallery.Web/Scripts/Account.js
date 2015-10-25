@@ -3,42 +3,40 @@ var photoGallery;
     var account;
     (function (account) {
         var register = (function () {
-            function register(ValidatorFactory, $http) {
+            function register($http, $window, $location) {
                 this.registerModel = {};
-                this.similarPassword = true;
+                this.invalidPassword = false;
+                this.passwordNotMatch = false;
                 this.http = $http;
-                this.validator = ValidatorFactory;
                 this.url = "/account/register";
+                this.window = $window;
+                this.window = $location;
             }
-            register.prototype.emailInput = function (event) {
-                return this.validator.validateEmail(event);
-            };
-            register.prototype.textInput = function (event) {
-                return this.validator.validateText(event);
-            };
-            register.prototype.passwordInput = function (event) {
-                return this.validator.validateTextAndNumbers(event);
-            };
             register.prototype.registerAction = function (model, forminvalid) {
+                var _this = this;
                 if (!forminvalid) {
-                    this.http.post(this.url, model);
+                    var promise = this.http.post(this.url, model);
+                    promise.then(function (data) {
+                        //this.window.location.href = "";
+                        _this.location.path("/Account/Login");
+                    });
                 }
+                // toast "ensure that all the fields are valid before submiting"
             };
             register.prototype.checkPassword = function (pass1, pass2) {
                 if (pass1 === pass2) {
-                    this.similarPassword = true;
+                    this.passwordNotMatch = false;
                 }
                 else {
-                    this.similarPassword = false;
+                    this.passwordNotMatch = true;
                 }
             };
             return register;
         })();
         var login = (function () {
-            function login(ValidatorFactory, $http) {
+            function login($http) {
                 this.loginModel = {};
                 this.http = $http;
-                this.validator = ValidatorFactory;
                 this.textRequired = false;
                 this.url = "/account/login";
             }
@@ -49,16 +47,10 @@ var photoGallery;
                 }
                 this.textRequired = true;
             };
-            login.prototype.emailInput = function (event) {
-                return this.validator.validateEmail(event);
-            };
-            login.prototype.passwordInput = function (event) {
-                return this.validator.validateTextAndNumbers(event);
-            };
             return login;
         })();
-        accountApp.controller("LoginCtrl", ["ValidatorFactory", "$http", login])
-            .controller("RegisterCtrl", ["ValidatorFactory", "$http", register]);
+        accountApp.controller("LoginCtrl", ["$http", login])
+            .controller("RegisterCtrl", ["$http", register]);
     })(account = photoGallery.account || (photoGallery.account = {}));
 })(photoGallery || (photoGallery = {}));
 //# sourceMappingURL=Account.js.map

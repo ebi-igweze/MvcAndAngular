@@ -11,11 +11,11 @@
 <!-- Projects Row -->
 <div class="row">
     <div class="col-md-4 portfolio-item"  ng-repeat="gallery in ctrl.galleries">
-        <a href="#/galleries/gallery/{{$index + 1}}">
+        <a href="galleries/gallery/{{$index + 1}}">
             <img class="img-responsive photo" ng-src="{{gallery.GalleryPhoto}}" alt="{{gallery.GalleryName}}">
         </a>
         <h3>
-            <a href="#/galleries/gallery/{{$index + 1}}">{{gallery.GalleryName}}</a>
+            <a href="galleries/gallery/{{$index + 1}}">{{gallery.GalleryName}}</a>
         </h3>
         <p>{{gallery.GalleryDiscription}}</p>
         <hr/>

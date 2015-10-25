@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace PhotoGallery.Web.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<Service.User> _userManager;
@@ -27,45 +28,59 @@ namespace PhotoGallery.Web.Controllers
                         new DataRepository(new UserDbContext()))));
         }
         
-        [ValidateAntiForgeryToken]
-        public ActionResult Login()
+        //[ValidateAntiForgeryToken]
+        public ActionResult Login(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Login(Service.User model)
-        {
-            if (ModelState.IsValid)
-            {
-                var identity = _userManager.CreateIdentity(model, DefaultAuthenticationTypes.ApplicationCookie);
-                _authManager.SignIn(identity);
-                return View();
-            }
 
-            return View();
+        [HttpPost]
+        public async Task<ActionResult> Login(Login model, string returnUrl)
+        {
+            if (!ModelState.IsValid)return View(model);
+            //var newModel = new Service.User(model);
+
+            await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: model.RememberMe, shouldLockout: false);
+            return RedirectToAction("index", "Home");
         }
 
         public ActionResult Register()
         {
-            return View();
+            var model = new Service.User();
+            return View(model);
         }
-        [HttpPost]
-        public async Task<ActionResult> RegisterAsync(Service.User model)
-        {
-            if (ModelState.IsValid)
-            {
-                await _userManager.CreateAsync(model);
 
-                return RedirectToAction("login");
+        [HttpPost]
+        public async Task<ActionResult> Register(Service.User model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var result =  _userManager.Create(model, model.Password);
+
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(model, isPersistent:false, rememberBrowser:false);
+                return RedirectToAction("Index", "Home");
             }
-            return View();
+            
+            return View(model);
         }
 
         public ActionResult SignOut()
         {
-            _authManager.SignOut();
+            _authManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("login");
+        }
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Home");
         }
     }
 }

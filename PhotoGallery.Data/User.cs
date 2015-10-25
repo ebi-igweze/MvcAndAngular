@@ -23,7 +23,7 @@ namespace PhotoGallery.Data
         [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [MaxLength(20)]
+        [MaxLength(150)]
         public string Password { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
 
@@ -41,6 +41,6 @@ namespace PhotoGallery.Data
             Email = user.Email;
             Password = user.Password;
         }
-        
+        public User() { }
     }
 }

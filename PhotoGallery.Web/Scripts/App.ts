@@ -6,7 +6,7 @@ accountApp.factory("ValidatorFactory", function () {
 
 var homeApp = angular.module("PhotoGalleryModule", ['ngRoute']);
 
-homeApp.config(['$routeProvider', function ($routeProvider) {
+homeApp.config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/galleries', {
             templateUrl: '/Templates/galleries.html',
@@ -24,4 +24,6 @@ homeApp.config(['$routeProvider', function ($routeProvider) {
             controllerAs: 'ctrl'
         })
         .otherwise('/galleries');
+
+    $locationProvider.html5Mode(true);
 }]);
